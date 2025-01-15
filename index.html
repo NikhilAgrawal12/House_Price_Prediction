@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Pricing Predictor</title>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="static/css/style.css">
+
+    <script text="javascript" src="static/js/script.js"></script>
+    <body>
+        <div class="wrapper">
+            <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+                <a class="navbar-brand" href="templates/dashboard.html">Exploratory analysis</a>
+            </nav>
+        </div>
+        <div class="jumbotron " >
+            <h1 class="display-12"><kbd>House Pricing Predictor</kbd></h1>
+
+            
+            </div>
+            <div class="grid-container">
+              <div class="one">
+                  <br>
+                  <h4> Filters</h4><br>
+
+                  Number of bedrooms <br>
+                  <select id="bedroom" aria-label="Default select example">
+                    <option selected>0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                  <br>
+                  <br> Number of bathrooms <br>
+                  <select id="bathrooms" aria-label="Default select example">
+                    <option selected>0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                  <br>
+                  <br> Number of cars in Garage <br>
+                  <select id="cars" aria-label="Default select example">
+                    <option selected>0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                <br>
+                <br>Condition of the house <br>
+                  <select id="condition" aria-label="Default select example">
+                    <option selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                  </select>
+                  <br>
+                  <br> Heating Quality <br>
+                  <select id="heatingQuality" aria-label="Default select example">
+                    <option selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                  <br>
+                  <br> Kitchen Quality <br>
+                  <select id="kitchenQuality" aria-label="Default select example">
+                    <option selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                  <br><br> Sqm Surface of the House <br>
+                  <!-- Range slider sqm -->
+                  <input id="sqm" type="range" min="0" max="550" value="0" step="10" list="tickmarks" onChange="change();">
+                  <datalist id="mine">
+                    <option>0</option>
+                    <option>25</option>
+                    <option>50</option>
+                    <option>75</option>
+                    <option>100</option>
+                  </datalist> <br><span id="result">0m2</span>
+                  <br><br>
+                  
+                  <!-- Button calculate price -->
+                  <button type="button" class="btn btn-dark" onclick="getSelectValue()">Calculate price</button>
+                  <br>
+              </div>
+              <div class="two">
+                <br>
+                <h3>House Description</h3>
+                  <span id="description">
+
+                  </span>
+
+              </div>
+              <div class="three"> <br><br><h1>Total price: <br><span id="price"> </span> </h1>
+                  
+              </div>  
+              <div class="four"> 
+
+                <img src="static/images/Plot Living Space vs Sale Price.jpg" style="width:100%; height:100%">
+              </div>
+              <div class="five"><br> 
+
+                <!-- Insert here Article-->
+                <h2> Try the Filters!</h2>
+                <div class="textAt">
+                Apply the filters for the house of your desires and checkout the final price
+                </div>  
+                <br>
+
+                <h3>Articles about houses</h3>
+                <div style="margin-left: 50px; margin-right: 50px; font:15px">
+                  Learn more about housing market with the links below!
+                  <br><br>
+                  </div>
+                <div style="margin-left: 50px; margin-right: 50px; font:20px">
+                  <a href="https://realestate.usnews.com/real-estate/articles/what-to-expect-from-the-housing-market" class="link-success">What to Expect From the Housing Market This Summer</a>
+                  <br><br>
+                  <a href="https://fortune.com/2022/06/13/these-40-overvalued-housing-markets-could-see-15-to-20-home-price-declines-if-a-recession-hits/" class="link-success">40 overvalued housing markets</a>
+                  <br><br>
+                  <a href="https://www.forbes.com/advisor/mortgages/housing-market-predictions/" class="link-success">Housing Market Predictions 2022: Will Prices Drop In The Third Quarter?</a>
+      
+              </div>
+              </div>
+            </div>
+            <br>
+
+          <script>
+              var result = document.getElementById("result");
+              var mine = document.getElementById("sqm");
+              function change(){
+                  result.innerText = mine.value + "m2";
+              }
+          </script>
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+        <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous"
+        />
+    </body>
+
+</head>
