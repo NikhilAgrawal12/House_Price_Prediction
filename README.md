@@ -6,13 +6,7 @@ In this project we are developing a machine learning algorithm. The target varia
 
 We selected to apply it to real Estate because of the availability of reliable information, and the importance of the housing market for the economy. When looking for a house, it is not easy to know if the house that you are interested in investing in is worth it. Also, there is a debate about whether or not there are bubbles in these assets, so our algorithm can help us have an informed opinion in the topic. 
 
-The project can be divided in the following stages:
-- Data Preprocessing
-- Data Storage
-- Data Retrieving
-- Machine Learning 
-- Dashboard
-- 
+
 # Data Source
 In a search for information that we can use to train our machine learning algorithm we found some government sources as well Kaggle, Web scraping is also being considered, but the data reported is not very consistent and the policy of web scraping friendly or not represent a barrier to get the data. Kaggle lets its datasets being used for educational purpose, so we are covered in that aspect.  
 
